@@ -87,11 +87,29 @@ GEM
       multi_json
     erubi (1.13.1)
     execjs (2.10.0)
-    faraday (2.8.1)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
+    faraday (1.10.4)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (1.0.2)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
     ffi (1.17.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -121,6 +139,7 @@ GEM
     minitest (5.25.4)
     msgpack (1.8.0)
     multi_json (1.15.0)
+    multipart-post (2.4.1)
     net-imap (0.3.9)
       date
       net-protocol
@@ -233,6 +252,7 @@ DEPENDENCIES
   byebug
   devise (~> 4.7.1)
   elasticsearch (~> 7.4.0)
+  faraday (~> 1.0)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg

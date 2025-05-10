@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
   get 'welcomes/index'
   get 'welcomes/register' => 'welcomes#register'
+  get 'health' => 'welcomes#health'
   root to: 'welcomes#index'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
