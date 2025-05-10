@@ -1,0 +1,98 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <%= link_to '← Back to Jobs', jobs_path, class: 'btn btn-outline-secondary' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-header bg-light">
+          <h1 class="mb-0"><%= @job.title %></h1>
+        </div>
+        <div class="card-body">
+          <h6 class="card-subtitle mb-3 text-muted">
+            <i class="fas fa-map-marker-alt"></i> <%= @job.location %>
+            <% if @job.salary.present? %>
+              &nbsp;|&nbsp; <i class="fas fa-money-bill-wave"></i> <%= @job.salary %>
+            <% end %>
+          </h6>
+
+          <div class="mb-4">
+            <h5>Description</h5>
+            <div class="card-text"><%= simple_format(@job.description) %></div>
+          </div>
+
+          <% if @job.requirements.present? %>
+            <div class="mb-4">
+              <h5>Requirements</h5>
+              <div class="card-text"><%= simple_format(@job.requirements) %></div>
+            </div>
+          <% end %>
+
+          <div class="card-footer bg-white">
+            <small class="text-muted">
+              Posted <%= time_ago_in_words(@job.created_at) %> ago
+              <% if @job.recruiter && @job.recruiter.company_name.present? %>
+                by <%= @job.recruiter.company_name %>
+              <% end %>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Actions</h5>
+        </div>
+        <div class="card-body">
+          <% if job_seeker_signed_in? %>
+            <% application = current_job_seeker.job_applications.find_by(job_id: @job.id) %>
+            <% if application %>
+              <div class="alert alert-success" role="alert">
+                <i class="fas fa-check-circle"></i> You have already applied for this job
+              </div>
+            <% else %>
+              <%= link_to 'Apply for this Job', apply_job_path(@job), method: :patch, class: 'btn btn-primary btn-block mb-3' %>
+            <% end %>
+          <% elsif recruiter_signed_in? && @job.recruiter == current_recruiter %>
+            <div class="list-group mb-3">
+              <%= link_to 'Edit Job', edit_job_path(@job), class: 'list-group-item list-group-item-action' %>
+              <%= link_to 'Delete Job', job_path(@job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'list-group-item list-group-item-action text-danger' %>
+            </div>
+          <% elsif !job_seeker_signed_in? && !recruiter_signed_in? %>
+            <div class="alert alert-info" role="alert">
+              <%= link_to 'Sign in', new_job_seeker_session_path %> or <%= link_to 'register', new_job_seeker_registration_path %> as a job seeker to apply
+            </div>
+          <% end %>
+
+          <% if recruiter_signed_in? && @job.recruiter == current_recruiter %>
+            <div class="card mt-3">
+              <div class="card-header bg-light">
+                <h5 class="mb-0">Applications</h5>
+              </div>
+              <div class="card-body">
+                <% if @job.job_applications.any? %>
+                  <p>This job has received <%= pluralize(@job.job_applications.count, 'application') %>.</p>
+                  <ul class="list-group">
+                    <% @job.job_applications.each do |application| %>
+                      <li class="list-group-item">
+                        <%= application.job_seeker.name || application.job_seeker.email %>
+                        <small class="text-muted d-block">Applied <%= time_ago_in_words(application.created_at) %> ago</small>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  <p class="text-muted">No applications yet.</p>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,46 @@
+<%= form_with(model: job, local: true) do |form| %>
+  <% if job.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(job.errors.count, "error") %> prevented this job from being saved:</h4>
+      <ul>
+        <% job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control', placeholder: 'e.g. Senior Ruby Developer' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location %>
+    <%= form.text_field :location, class: 'form-control', placeholder: 'e.g. San Francisco, CA or Remote' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :salary %>
+    <%= form.text_field :salary, class: 'form-control', placeholder: 'e.g. $80,000 - $120,000 or Competitive' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, rows: 6, class: 'form-control', placeholder: 'Describe the position, responsibilities, and what makes it exciting...' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :requirements %>
+    <%= form.text_area :requirements, rows: 6, class: 'form-control', placeholder: 'List the skills, qualifications, and experience required for this role...' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit class: 'btn btn-primary' %>
+    <% if job.persisted? %>
+      <%= link_to 'Cancel', job_path(job), class: 'btn btn-outline-secondary' %>
+    <% else %>
+      <%= link_to 'Cancel', jobs_path, class: 'btn btn-outline-secondary' %>
+    <% end %>
+  </div>
+<% end %> 

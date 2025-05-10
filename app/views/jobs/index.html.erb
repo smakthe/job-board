@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <h1>Available Jobs</h1>
+      <% if recruiter_signed_in? %>
+        <%= link_to 'Post New Job', new_job_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <% if @jobs.any? %>
+        <% @jobs.each do |job| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-8">
+                  <h5 class="card-title"><%= job.title %></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><%= job.location %></h6>
+                  <p class="card-text"><%= truncate(job.description, length: 200) %></p>
+                </div>
+                <div class="col-md-4 d-flex flex-column justify-content-center align-items-end">
+                  <% if recruiter_signed_in? && job.recruiter == current_recruiter %>
+                    <div class="btn-group">
+                      <%= link_to 'View', job_path(job), class: 'btn btn-sm btn-info' %>
+                      <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-sm btn-warning' %>
+                      <%= link_to 'Delete', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                    </div>
+                  <% else %>
+                    <%= link_to 'View Details', job_path(job), class: 'btn btn-primary' %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer text-muted">
+              Posted <%= time_ago_in_words(job.created_at) %> ago
+              <% if job.recruiter && job.recruiter.company_name.present? %>
+                by <%= job.recruiter.company_name %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="alert alert-info">
+          No jobs available at the moment.
+          <% if recruiter_signed_in? %>
+            <%= link_to 'Post a new job', new_job_path %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,114 @@
+<% if current_recruiter %>
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h1>Recruiter Dashboard</h1>
+        <p>Manage your job listings and applications</p>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Your Job Listings</h2>
+          <%= link_to 'Post New Job', new_job_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <% if @jobs.present? %>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Location</th>
+                  <th>Posted</th>
+                  <th>Applications</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @jobs.each do |job| %>
+                  <tr>
+                    <td><%= job.title %></td>
+                    <td><%= job.location %></td>
+                    <td><%= job.created_at.strftime("%B %d, %Y") %></td>
+                    <td><%= job.job_applications.count %></td>
+                    <td>
+                      <%= link_to 'View', job_path(job), class: 'btn btn-sm btn-info' %>
+                      <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-sm btn-warning' %>
+                      <%= link_to 'Delete', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <div class="alert alert-info">
+            You haven't posted any jobs yet. <%= link_to 'Create your first job listing', new_job_path %>.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% elsif current_job_seeker %>
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-md-12">
+        <h1>Job Seeker Dashboard</h1>
+        <p>Track your job applications and discover new opportunities</p>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Your Applications</h2>
+          <%= link_to 'Browse Jobs', jobs_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <% if @applications.present? %>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Location</th>
+                  <th>Applied On</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @applications.each do |application| %>
+                  <tr>
+                    <td><%= application.job.title %></td>
+                    <td><%= application.job.recruiter.company_name rescue "N/A" %></td>
+                    <td><%= application.job.location %></td>
+                    <td><%= application.created_at.strftime("%B %d, %Y") %></td>
+                    <td>
+                      <%= link_to 'View Job', job_path(application.job), class: 'btn btn-sm btn-info' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        <% else %>
+          <div class="alert alert-info">
+            You haven't applied to any jobs yet. <%= link_to 'Browse available jobs', jobs_path %>.
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
