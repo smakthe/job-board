@@ -23,15 +23,15 @@ default: &default
 
 development:
   <<: *default
-  database: Therubyrails_development
-  username: postgres
-  password: 1234
+  database: job_board_development
+  username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] %>
+  password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: Therubyrails
+  #username: JobBoard
 
   # The password associated with the postgres role (username).
   #password:
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 # test:
 #   <<: *default
-#   database: Therubyrails_test
+#   database: job_board_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,6 +82,6 @@ development:
 #
 # production:
 #   <<: *default
-#   database: Therubyrails_production
-#   username: Therubyrails
-#   password: <%= ENV['Therubyrails_DATABASE_PASSWORD'] %>
+#   database: job_board_production
+#   username: <%= ENV['PRODUCTION_DATABASE_USERNAME'] %>
+#   password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
