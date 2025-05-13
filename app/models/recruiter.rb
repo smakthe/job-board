@@ -7,6 +7,7 @@ class Recruiter < ApplicationRecord
   has_many :jobs, dependent: :destroy
 
   after_create :send_email
+
   def send_email
   	UserMailer.recruiter_email(self).deliver_now		
   end

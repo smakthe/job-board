@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :recruiters
   devise_for :job_seekers
   resources :jobs
-  match "apply_job", to: 'jobs#apply', via: :patch
+  match "jobs/:id/apply", to: 'jobs#apply', as: 'apply_job', via: [:get, :patch]
   namespace :dashboard do
     
     authenticated :recruiter do

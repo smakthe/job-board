@@ -34,7 +34,7 @@
                 <% @jobs.each do |job| %>
                   <tr>
                     <td><%= job.title %></td>
-                    <td><%= job.location %></td>
+                    <td><%= job.job_location %></td>
                     <td><%= job.created_at.strftime("%B %d, %Y") %></td>
                     <td><%= job.job_applications.count %></td>
                     <td>
@@ -93,7 +93,7 @@
                   <tr>
                     <td><%= application.job.title %></td>
                     <td><%= application.job.recruiter.company_name rescue "N/A" %></td>
-                    <td><%= application.job.location %></td>
+                    <td><%= application.job.job_location %></td>
                     <td><%= application.created_at.strftime("%B %d, %Y") %></td>
                     <td>
                       <%= link_to 'View Job', job_path(application.job), class: 'btn btn-sm btn-info' %>

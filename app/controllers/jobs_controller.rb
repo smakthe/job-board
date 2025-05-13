@@ -41,21 +41,27 @@ class JobsController < ApplicationController
   end
 
   def apply
-    application = JobApplication.new(job: @job, job_seeker: current_job_seeker)
-    
-    if application.save
-      redirect_to @job, notice: 'You have successfully applied for this job.'
+    if request.patch?
+      application = JobApplication.new(job: @job, job_seeker: current_job_seeker)
+      
+      if application.save
+        redirect_to @job, notice: 'You have successfully applied for this job.'
+      else
+        redirect_to @job, alert: 'Unable to apply for this job.'
+      end
     else
-      redirect_to @job, alert: 'Unable to apply for this job.'
+      # For GET requests, just redirect to the job page
+      redirect_to @job
     end
   end
 
   private
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    def job_params
-      params.require(:job).permit(:title, :description, :requirements, :location, :salary)
-    end
+  def job_params
+    params.require(:job).permit(:title, :description, :salary, :experience, :job_location,)
+  end
 end 

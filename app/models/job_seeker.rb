@@ -7,6 +7,7 @@ class JobSeeker < ApplicationRecord
 	has_many :jobs, through: :job_applications
 
 	after_create :send_email
+
 	def send_email
 		UserMailer.jobseeker_email(self).deliver_now		
 	end

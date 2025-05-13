@@ -21,7 +21,7 @@ end
 private
 
 	def user_params
-		if current_user.instance_of?JobSeeker		
+		if current_user.instance_of? JobSeeker		
 			params.require(:job_seeker).permit(:name, :qualification, :skills, :dob, :experience)
 		else
 			params.require(:recruiter).permit(:cname, :description, :clocation, :csize)

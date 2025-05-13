@@ -13,7 +13,7 @@
         </div>
         <div class="card-body">
           <h6 class="card-subtitle mb-3 text-muted">
-            <i class="fas fa-map-marker-alt"></i> <%= @job.location %>
+            <i class="fas fa-map-marker-alt"></i> <%= @job.job_location %>
             <% if @job.salary.present? %>
               &nbsp;|&nbsp; <i class="fas fa-money-bill-wave"></i> <%= @job.salary %>
             <% end %>
@@ -24,10 +24,10 @@
             <div class="card-text"><%= simple_format(@job.description) %></div>
           </div>
 
-          <% if @job.requirements.present? %>
+          <% if @job.experience.present? %>
             <div class="mb-4">
-              <h5>Requirements</h5>
-              <div class="card-text"><%= simple_format(@job.requirements) %></div>
+              <h5>Experience</h5>
+              <div class="card-text"><%= simple_format(@job.experience) %></div>
             </div>
           <% end %>
 
@@ -56,7 +56,9 @@
                 <i class="fas fa-check-circle"></i> You have already applied for this job
               </div>
             <% else %>
-              <%= link_to 'Apply for this Job', apply_job_path(@job), method: :patch, class: 'btn btn-primary btn-block mb-3' %>
+              <%= form_with url: apply_job_path(@job), method: :patch, local: true, class: 'mb-3' do |f| %>
+                <%= f.submit 'Apply for this Job', class: 'btn btn-primary btn-block' %>
+              <% end %>
             <% end %>
           <% elsif recruiter_signed_in? && @job.recruiter == current_recruiter %>
             <div class="list-group mb-3">
