@@ -17,7 +17,7 @@
 <div class="row mt-5">
   <div class="col-md-8">
     <h2>Latest Job Postings</h2>
-    <% Job.order(created_at: :desc).limit(5).each do |job| %>
+    <% Job.latest.each do |job| %>
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title"><%= job.title %></h5>

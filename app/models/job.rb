@@ -3,6 +3,8 @@ class Job < ApplicationRecord
   has_many :job_applications, dependent: :destroy
   has_many :job_seekers, through: :job_applications
 
+  scope :latest, -> { order(created_at: :desc).limit(3) }
+
   # Add searchkick with error handling
   if defined?(ELASTICSEARCH_AVAILABLE) && ELASTICSEARCH_AVAILABLE
     searchkick text_middle: [:title], callbacks: false
