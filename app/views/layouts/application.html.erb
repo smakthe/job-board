@@ -6,6 +6,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   </head>
@@ -28,10 +31,10 @@
                 <%= link_to "Dashboard", dashboard_root_path, class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="jobSeekerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= current_job_seeker.name || current_job_seeker.email %>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="jobSeekerDropdown">
                   <%= link_to "Edit Profile", edit_job_seeker_registration_path, class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <%= link_to "Sign Out", destroy_job_seeker_session_path, method: :delete, class: "dropdown-item" %>
@@ -42,10 +45,10 @@
                 <%= link_to "Dashboard", dashboard_root_path, class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="recruiterDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= current_recruiter.company_name || current_recruiter.email %>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="recruiterDropdown">
                   <%= link_to "Edit Profile", edit_recruiter_registration_path, class: "dropdown-item" %>
                   <div class="dropdown-divider"></div>
                   <%= link_to "Sign Out", destroy_recruiter_session_path, method: :delete, class: "dropdown-item" %>
@@ -56,10 +59,10 @@
                 <%= link_to "Register", welcomes_register_path, class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="loginDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Sign In
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="loginDropdown">
                   <%= link_to "Job Seeker", new_job_seeker_session_path, class: "dropdown-item" %>
                   <%= link_to "Recruiter", new_recruiter_session_path, class: "dropdown-item" %>
                 </div>
