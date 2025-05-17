@@ -36,9 +36,6 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "devise", "~> 4.7.1"
-gem 'searchkick', '~> 4.2.0'
-gem 'elasticsearch', '~> 7.4.0'
-gem 'faraday', '~> 1.0'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 gem 'sassc-rails', '~> 2.1.2'

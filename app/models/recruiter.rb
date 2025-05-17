@@ -11,14 +11,4 @@ class Recruiter < ApplicationRecord
   def send_email
   	UserMailer.recruiter_email(self).deliver_now		
   end
-  
-  # Add searchkick with error handling
-  if defined?(ELASTICSEARCH_AVAILABLE) && ELASTICSEARCH_AVAILABLE
-    searchkick text_middle: [:cname, :clocation], callbacks: false
-  end
-  
-  # Fallback search method when Elasticsearch is not available
-  def self.search_by_company(query)
-    simple_search(query, [:company_name, :email])
-  end
 end

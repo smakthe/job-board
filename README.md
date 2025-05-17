@@ -9,8 +9,6 @@ A comprehensive web platform built with Ruby on Rails that connects job seekers 
 * PostgreSQL database
 * Bootstrap 4.5 for UI components
 * Devise for authentication
-* Searchkick for job and company search functionality
-* ElasticSearch for powering search features
 
 ## Core Features
 
@@ -40,7 +38,6 @@ A comprehensive web platform built with Ruby on Rails that connects job seekers 
 * Ruby 2.6.3
 * Rails 6.0
 * PostgreSQL
-* Elasticsearch
 
 ### Installation
 
