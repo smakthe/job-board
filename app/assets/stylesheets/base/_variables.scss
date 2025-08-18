@@ -1,0 +1,18 @@
+// Custom color variables
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$light-gray: #f8f9fa;
+
+// Bootstrap variable overrides (must be before Bootstrap import)
+$primary: $primary-color;
+$secondary: $secondary-color;
+
+// Custom theme colors
+$theme-colors: (
+  "primary": $primary-color,
+  "secondary": $secondary-color,
+  "light": $light-gray
+);
+
+// Typography
+$font-family-base: 'Roboto', sans-serif;

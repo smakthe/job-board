@@ -1,0 +1,50 @@
+// Bootstrap component overrides
+
+// Navbar customizations
+.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: $primary-color !important;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: white !important;
+}
+
+// Footer styling
+.footer {
+  margin-top: auto;
+  background-color: $secondary-color !important;
+  color: white;
+  
+  .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+}
+
+// Button overrides
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 10%);
+  }
+}
+
+.btn-outline-primary {
+  color: $primary-color;
+  border-color: $primary-color;
+  
+  &:hover {
+    background-color: $primary-color;
+    border-color: $primary-color;
+  }
+}
+
+// Form styling
+.form-control:focus {
+  border-color: rgba($primary-color, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+}

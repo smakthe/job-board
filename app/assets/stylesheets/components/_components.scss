@@ -1,0 +1,65 @@
+// Custom component styles
+
+// Card styling
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    background-color: rgba($primary-color, 0.1);
+    border-bottom: 1px solid rgba($primary-color, 0.2);
+    font-weight: 500;
+  }
+}
+
+// Job listings
+.job-listing {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba($primary-color, 0.05);
+  }
+}
+
+// Dashboard components
+.dashboard-stat {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+  
+  i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: $primary-color;
+  }
+  
+  .stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: $secondary-color;
+  }
+}
+
+// Custom utilities
+.text-primary {
+  color: $primary-color !important;
+}
+
+.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.bg-secondary {
+  background-color: $secondary-color !important;
+}

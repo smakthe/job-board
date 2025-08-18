@@ -1,0 +1,28 @@
+// Rails 8 Application Stylesheet
+// Import order is important!
+
+@import "base/variables";
+@import "base/bootstrap_overrides";
+@import "components/devise";
+@import "components/components";
+
+// Base layout styles
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+}
+
+.container {
+  flex: 1;
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .devise-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}

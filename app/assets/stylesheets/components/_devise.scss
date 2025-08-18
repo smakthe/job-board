@@ -1,4 +1,4 @@
-// Devise forms styling
+// Devise authentication forms styling
 
 .devise-container {
   max-width: 500px;
@@ -10,7 +10,7 @@
   
   h2 {
     text-align: center;
-    color: #3498db;
+    color: $primary-color;
     margin-bottom: 1.5rem;
     font-weight: 500;
   }
@@ -19,13 +19,13 @@
     margin-bottom: 1.5rem;
   }
   
-  .field {
+  .field, .form-group {
     margin-bottom: 1.25rem;
   }
   
   label {
     font-weight: 500;
-    color: #2c3e50;
+    color: $secondary-color;
   }
   
   .form-control {
@@ -35,8 +35,8 @@
     height: auto;
     
     &:focus {
-      border-color: #3498db;
-      box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+      border-color: $primary-color;
+      box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
     }
   }
   
@@ -47,20 +47,6 @@
     .btn {
       padding: 0.5rem 2rem;
       font-weight: 500;
-    }
-  }
-  
-  .devise-links {
-    margin-top: 1.5rem;
-    text-align: center;
-    
-    a {
-      color: #3498db;
-      text-decoration: none;
-      
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
   
@@ -80,10 +66,16 @@
   }
 }
 
-// Responsive adjustments
-@media (max-width: 576px) {
-  .devise-container {
-    padding: 1.5rem;
-    margin: 1rem;
+.devise-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
   }
-} 
+}
