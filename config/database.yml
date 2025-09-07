@@ -82,6 +82,6 @@ development:
 #
 # production:
 #   <<: *default
-#   database: job_board_production
+#   database: job_board
 #   username: <%= ENV['PRODUCTION_DATABASE_USERNAME'] %>
 #   password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
