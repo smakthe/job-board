@@ -80,8 +80,6 @@ development:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-# production:
-#   <<: *default
-#   database: job_board
-#   username: <%= ENV['PRODUCTION_DATABASE_USERNAME'] %>
-#   password: <%= ENV['PRODUCTION_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
