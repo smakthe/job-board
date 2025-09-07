@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.3"
+ruby "3.1.4"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", '~> 6.0.0'
+gem "rails", '~> 6.1.7'
 
 # Use mysql as the database for Active Record
 gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 3.12.2"
+gem "puma", "~> 5.6"
 
 # Webpacker for JavaScript bundling
 gem 'webpacker', '~> 4.0'
@@ -30,15 +30,16 @@ gem 'webpacker', '~> 4.0'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap", "~> 1.16", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem "devise", "~> 4.7.1"
-gem 'bootstrap', '~> 4.5.0'
+gem "devise", "~> 4.9"
+gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'
 gem 'sassc-rails', '~> 2.1.2'
+gem 'psych', '< 4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,6 +51,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'racc', '~> 1.6'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
