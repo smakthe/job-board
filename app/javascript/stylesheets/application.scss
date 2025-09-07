@@ -23,6 +23,12 @@ body {
 
 .navbar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #3498db !important;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: white !important;
 }
 
 .footer {
@@ -124,4 +130,74 @@ body {
 
 .bg-secondary {
   background-color: $secondary-color !important;
+}
+
+// Devise forms styling
+.devise-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  h2 {
+    text-align: center;
+    color: #3498db;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    font-weight: 500;
+    color: #2c3e50;
+  }
+
+  .form-control {
+    border-radius: 4px;
+    border: 1px solid #e1e1e1;
+    padding: 0.75rem;
+    height: auto;
+  }
+
+  .form-actions {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    input {
+      margin-right: 10px;
+    }
+  }
+}
+
+.devise-links {
+  margin-top: 1.5rem;
+  text-align: center;
+
+  a {
+    color: #3498db;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Responsive Styling
+@media (max-width: 576px) {
+  .devise-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
 }
