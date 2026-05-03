@@ -24,6 +24,7 @@ default: &default
 development:
   <<: *default
   database: job_board_development
+  host: localhost
   username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] %>
   password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
 
