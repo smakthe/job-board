@@ -25,8 +25,7 @@ development:
   <<: *default
   database: job_board_development
   host: localhost
-  username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] %>
-  password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
+  username: postgres
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,4 +82,3 @@ development:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
