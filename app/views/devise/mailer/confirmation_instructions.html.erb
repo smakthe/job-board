@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<div style="font-family: 'Inter', Helvetica, Arial, sans-serif; color: #1E293B; max-width: 600px; margin: 0 auto; border: 1px solid #E2E8F0; padding: 30px; background-color: #ffffff;">
+  <h2 style="color: #0F172A; font-family: 'Playfair Display', Georgia, serif; margin-top: 0;">Welcome, <%= @email %>!</h2>
+  <p style="color: #475569; font-size: 16px; line-height: 1.5;">Thank you for registering. Please confirm your account email address by clicking the link below:</p>
+  <div style="margin-top: 30px; margin-bottom: 30px;">
+    <%= link_to 'Confirm My Account', confirmation_url(@resource, confirmation_token: @token), style: "background-color: #0F172A; color: #ffffff; padding: 12px 24px; text-decoration: none; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block;" %>
+  </div>
+  <p style="color: #475569; font-size: 14px; margin-bottom: 0;">If you did not initiate this request, please ignore this email.</p>
+</div>
