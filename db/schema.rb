@@ -10,54 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_05_03_202204) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_03_202204) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "job_applications", force: :cascade do |t|
+    t.datetime "created_at", null: false
     t.bigint "job_id", null: false
     t.bigint "job_seeker_id", null: false
-    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_job_applications_on_job_id"
     t.index ["job_seeker_id"], name: "index_job_applications_on_job_seeker_id"
   end
 
   create_table "job_seekers", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "resume"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
+    t.string "name"
     t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at", precision: nil
+    t.string "reset_password_token"
+    t.text "resume"
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_job_seekers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_job_seekers_on_reset_password_token", unique: true
   end
 
   create_table "jobs", force: :cascade do |t|
-    t.string "title"
+    t.datetime "created_at", null: false
     t.text "description"
-    t.string "salary"
     t.string "experience"
     t.string "job_location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.bigint "recruiter_id", null: false
+    t.string "salary"
+    t.string "title"
+    t.datetime "updated_at", null: false
     t.index ["recruiter_id"], name: "index_jobs_on_recruiter_id"
   end
 
   create_table "recruiters", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
-    t.datetime "remember_created_at", precision: nil
     t.string "company_name"
     t.string "contact_number"
     t.datetime "created_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "reset_password_sent_at", precision: nil
+    t.string "reset_password_token"
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_recruiters_on_email", unique: true
     t.index ["reset_password_token"], name: "index_recruiters_on_reset_password_token", unique: true

@@ -1,0 +1,1 @@
+job_board  | /rails/bin/docker-entrypoint: line 8: /rails/bin/thrust: No such file or directory

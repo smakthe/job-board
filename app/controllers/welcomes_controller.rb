@@ -1,8 +1,8 @@
 class WelcomesController < ApplicationController
   def index
-  	if current_user
-  		redirect_to :controller => 'dashboard/dashboard', :action => 'index' 
-  	end
+    if user_signed_in?
+      redirect_to dashboard_path
+    end
   end
 
   def register

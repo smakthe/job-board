@@ -4,11 +4,11 @@ class JobSeeker < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :job_applications
-	has_many :jobs, through: :job_applications
+  has_many :jobs, through: :job_applications
 
-	after_create :send_email
+  after_create :send_email
 
-	def send_email
-		UserMailer.jobseeker_email(self).deliver_now		
-	end
+  def send_email
+    UserMailer.jobseeker_email(self).deliver_now
+  end
 end

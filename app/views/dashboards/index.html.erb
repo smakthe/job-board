@@ -1,4 +1,4 @@
-<% if current_recruiter %>
+<% if recruiter_signed_in? %>
   <div class="container">
     <div class="row mb-4">
       <div class="col-md-12">
@@ -11,7 +11,7 @@
       <div class="col-md-12">
         <div class="d-flex justify-content-between align-items-center">
           <h2>Your Job Listings</h2>
-          <%= link_to 'Post New Job', new_job_path, class: 'btn btn-primary' %>
+          <%= link_to 'Post New Job', new_job_path, class: 'btn btn-primary btn-outline-light' %>
         </div>
       </div>
     </div>
@@ -27,20 +27,18 @@
                   <th>Location</th>
                   <th>Posted</th>
                   <th>Applications</th>
-                  <th>Actions</th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="align-middle">
                 <% @jobs.each do |job| %>
                   <tr>
                     <td><%= job.title %></td>
                     <td><%= job.job_location %></td>
                     <td><%= job.created_at.strftime("%B %d, %Y") %></td>
                     <td><%= job.job_applications.count %></td>
-                    <td>
-                      <%= link_to 'View', job_path(job), class: 'btn btn-sm btn-info' %>
-                      <%= link_to 'Edit', edit_job_path(job), class: 'btn btn-sm btn-warning' %>
-                      <%= link_to 'Delete', job_path(job), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                    <td class="text-end">
+                      <%= link_to 'View', job_path(job), class: 'btn btn-sm btn-light btn-outline-dark rounded-0 px-3' %>
                     </td>
                   </tr>
                 <% end %>
@@ -56,7 +54,7 @@
     </div>
   </div>
 
-<% elsif current_job_seeker %>
+<% elsif job_seeker_signed_in? %>
   <div class="container">
     <div class="row mb-4">
       <div class="col-md-12">
@@ -69,7 +67,7 @@
       <div class="col-md-12">
         <div class="d-flex justify-content-between align-items-center">
           <h2>Your Applications</h2>
-          <%= link_to 'Browse Jobs', jobs_path, class: 'btn btn-primary' %>
+          <%= link_to 'Browse Jobs', jobs_path, class: 'btn btn-primary btn-outline-light' %>
         </div>
       </div>
     </div>
@@ -85,18 +83,18 @@
                   <th>Company</th>
                   <th>Location</th>
                   <th>Applied On</th>
-                  <th>Actions</th>
+                  <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="align-middle">
                 <% @applications.each do |application| %>
                   <tr>
                     <td><%= application.job.title %></td>
                     <td><%= application.job.recruiter.company_name rescue "N/A" %></td>
                     <td><%= application.job.job_location %></td>
                     <td><%= application.created_at.strftime("%B %d, %Y") %></td>
-                    <td>
-                      <%= link_to 'View Job', job_path(application.job), class: 'btn btn-sm btn-info' %>
+                    <td class="text-end">
+                      <%= link_to 'View', job_path(application.job), class: 'btn btn-sm btn-light btn-outline-dark rounded-0 px-3' %>
                     </td>
                   </tr>
                 <% end %>

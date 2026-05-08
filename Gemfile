@@ -1,9 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "4.0.1"
-
-gem "rails", "~> 8.1.2"
+gem "rails", "~> 8.1.3"
 
 gem "pg"
 gem "puma", "~> 6.4"
@@ -15,13 +13,26 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "sprockets-rails"
+gem "solid_cache"
+gem "solid_queue"
+gem "solid_cable"
+gem "kamal", require: false
+gem "thruster", require: false
+gem "image_processing", "~> 1.2"
 
 group :development, :test do
   gem 'debug', platforms: [:mri, :windows]
+  gem "bundler-audit", require: false
+  gem "brakeman", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'letter_opener'
 end
 
 gem 'tzinfo-data', platforms: [:windows, :jruby]
+
+# Lock rdoc to the Ruby 4.0.3 default version to prevent double-load warnings
+gem 'rdoc', '7.0.3'
