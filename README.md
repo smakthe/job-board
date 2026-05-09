@@ -4,10 +4,10 @@ A comprehensive web platform built with Ruby on Rails that connects job seekers 
 
 ## Technology Stack
 
-* Ruby 2.6.3
-* Rails 6.0
-* PostgreSQL database
-* Bootstrap 4.5 for UI components
+* Ruby 4.0.3
+* Rails 8.1.3
+* SQLite database
+* Bootstrap 5 for UI components
 * Devise for authentication
 
 ## Core Features
@@ -28,16 +28,12 @@ A comprehensive web platform built with Ruby on Rails that connects job seekers 
 * Job Seekers: Track job applications and browse new opportunities
 * Profile management for both user types
 
-### Search Functionality
-* Text-based search for jobs by title
-* Company search by name and location
-
 ## Getting Started
 
 ### Prerequisites
-* Ruby 2.6.3
-* Rails 6.0
-* PostgreSQL
+* Ruby 4.0.3
+* Rails 8.1.3
+* SQLite database
 
 ### Installation
 
@@ -48,8 +44,7 @@ A comprehensive web platform built with Ruby on Rails that connects job seekers 
    ```
 3. Set up the database:
    ```
-   rails db:create
-   rails db:migrate
+   rails db:prepare
    ```
 4. Start the server:
    ```
