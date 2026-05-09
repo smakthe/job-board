@@ -12,7 +12,7 @@ class AddDeviseToJobSeekers < ActiveRecord::Migration[6.0]
       unless column_exists?(:job_seekers, :reset_password_token)
         t.string   :reset_password_token
       end
-      
+
       unless column_exists?(:job_seekers, :reset_password_sent_at)
         t.datetime :reset_password_sent_at
       end
@@ -46,7 +46,7 @@ class AddDeviseToJobSeekers < ActiveRecord::Migration[6.0]
     unless index_exists?(:job_seekers, :email, unique: true)
       add_index :job_seekers, :email, unique: true
     end
-    
+
     unless index_exists?(:job_seekers, :reset_password_token, unique: true)
       add_index :job_seekers, :reset_password_token, unique: true
     end
@@ -62,11 +62,11 @@ class AddDeviseToJobSeekers < ActiveRecord::Migration[6.0]
         t.remove :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at
       end
     end
-    
+
     if index_exists?(:job_seekers, :email, unique: true)
       remove_index :job_seekers, :email
     end
-    
+
     if index_exists?(:job_seekers, :reset_password_token, unique: true)
       remove_index :job_seekers, :reset_password_token
     end

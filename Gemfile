@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 8.1.3"
@@ -21,7 +21,7 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem "debug", platforms: [:mri, :windows]
+  gem "debug", platforms: [ :mri, :windows ]
   gem "bundler-audit", require: false
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
@@ -32,4 +32,4 @@ group :development do
   gem "letter_opener"
 end
 
-gem "tzinfo-data", platforms: [:windows, :jruby]
+gem "tzinfo-data", platforms: [ :windows, :jruby ]

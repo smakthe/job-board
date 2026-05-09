@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class Dashboard::ProfilesControllerTest < ActionDispatch::IntegrationTest
   test "should get show" do
@@ -15,5 +15,4 @@ class Dashboard::ProfilesControllerTest < ActionDispatch::IntegrationTest
     get dashboard_profiles_update_url
     assert_response :success
   end
-
 end

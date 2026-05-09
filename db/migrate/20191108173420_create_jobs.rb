@@ -6,7 +6,7 @@ class CreateJobs < ActiveRecord::Migration[6.0]
       t.string :salary
       t.string :experience
       t.string :job_location
-      
+
       t.timestamps
     end
   end
