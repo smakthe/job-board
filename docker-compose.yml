@@ -1,33 +1,16 @@
 services:
-  db:
-    image: postgres:18-alpine
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: job_board_production
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d job_board_production"]
-      interval: 2s
-      timeout: 5s
-      retries: 10
-
   web:
     build: .
     container_name: job_board
     ports:
       - "3000:80"
-    depends_on:
-      db:
-        condition: service_healthy
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql://postgres:password@db:5432/job_board_production
       RAILS_ENV: production
       RAILS_LOG_TO_STDOUT: "true"
+    volumes:
+      - job_board_data:/rails/storage
+
 volumes:
-  postgres_data:
+  job_board_data:

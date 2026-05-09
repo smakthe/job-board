@@ -3,11 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 8.1.3"
 
-gem "pg"
+gem "sqlite3"
 gem "puma", "~> 6.4"
 gem "bootsnap", "~> 1.18", require: false
 gem "devise", github: "heartcombo/devise", branch: "main"
-gem "bootstrap", '~> 5.3'
+gem "bootstrap", "~> 5.3"
 gem "dartsass-sprockets"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -21,18 +21,15 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'debug', platforms: [:mri, :windows]
+  gem "debug", platforms: [:mri, :windows]
   gem "bundler-audit", require: false
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'letter_opener'
+  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "letter_opener"
 end
 
-gem 'tzinfo-data', platforms: [:windows, :jruby]
-
-# Lock rdoc to the Ruby 4.0.3 default version to prevent double-load warnings
-gem 'rdoc', '7.0.3'
+gem "tzinfo-data", platforms: [:windows, :jruby]
