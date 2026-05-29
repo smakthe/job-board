@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "rails", "~> 8.1.3"
 
 gem "sqlite3"
-gem "puma", "~> 6.4"
+gem "puma", "~> 8.0"
 gem "bootsnap", "~> 1.18", require: false
 gem "devise", github: "heartcombo/devise", branch: "main"
 gem "bootstrap", "~> 5.3"
