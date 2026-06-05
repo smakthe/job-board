@@ -5,7 +5,7 @@ gem "rails", "~> 8.1.3"
 
 gem "sqlite3"
 gem "puma", "~> 6.4"
-gem "bootsnap", "~> 1.18", require: false
+gem "bootsnap", "~> 1.24", require: false
 gem "devise", github: "heartcombo/devise", branch: "main"
 gem "bootstrap", "~> 5.3"
 gem "dartsass-sprockets"
